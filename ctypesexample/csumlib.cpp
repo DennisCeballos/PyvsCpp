@@ -5,6 +5,7 @@
 #endif
 
 #include <iostream>
+#include <algorithm>
 
 /** 
  * Compute the sum an array
@@ -33,4 +34,12 @@ LIBRARY_API double *add(double *a, double *b)
     }
 
     return res;
+}
+
+LIBRARY_API int * ordenar(int *lista)
+{
+    int size = sizeof(lista)/sizeof(lista[0]);
+    std::sort(lista,lista+size);
+
+    return lista;
 }

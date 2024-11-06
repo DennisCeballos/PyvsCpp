@@ -7,6 +7,7 @@ libfile = pathlib.Path(__file__).parent / "csumlib.so"
 csumlib = ctypes.CDLL(str(libfile))
 
 type_vec = ctypes.POINTER(ctypes.c_double * 3)
+type_vec_simple = ctypes.POINTER(ctypes.c_int)
 
 
 # python function wrappers around the c++ functions
@@ -29,3 +30,11 @@ def add(a: list, b: list) -> list:
     r_p = csumlib.add(a_p, b_p)
     # print(r_p.contents)
     return [l for l in r_p.contents]
+
+
+csumlib.ordenar.restype = type_vec_simple
+csumlib.ordenar.argtypes = [numpy.ctypeslib.ndpointer(dtype=numpy.int32)]
+
+def ordenar(a: numpy.ndarray) -> numpy.ndarray:
+    ordenado = numpy.ctypeslib.as_array( csumlib.ordenar(a), shape=(len(a),))
+    return ordenado

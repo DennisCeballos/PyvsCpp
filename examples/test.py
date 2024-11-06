@@ -1,10 +1,26 @@
 import numpy
-from ctypesexample.summing import csum, add
+from ctypesexample.summing import csum, add, ordenar
+import time
 
 array = numpy.arange(0, 100000000, 1, numpy.int32)
-array_sum = csum(len(array), array)
 
-print("sum of array: {}".format(array_sum))
+start = time.time()
+# array_sum = csum(len(array), array)
+array_ordenado = ordenar(array)
+end = time.time()
+print("Time: " + str(end-start))
+
+print("Sorted: ", end="")
+print(array_ordenado)
+
+
+start = time.time()
+rptaPy = array.sort()
+end = time.time()
+print("Time: " + str(end-start))
+
+print("Sorted: ", end="")
+print(rptaPy)
 
 
 a = [1.2, 2.0, 4.0]
