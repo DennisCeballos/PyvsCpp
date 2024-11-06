@@ -33,8 +33,8 @@ def add(a: list, b: list) -> list:
 
 
 csumlib.ordenar.restype = type_vec_simple
-csumlib.ordenar.argtypes = [numpy.ctypeslib.ndpointer(dtype=numpy.int32)]
+csumlib.ordenar.argtypes = [ctypes.c_int, numpy.ctypeslib.ndpointer(dtype=numpy.int32)]
 
-def ordenar(a: numpy.ndarray) -> numpy.ndarray:
-    ordenado = numpy.ctypeslib.as_array( csumlib.ordenar(a), shape=(len(a),))
+def ordenar(n: int, a: numpy.ndarray) -> numpy.ndarray:
+    ordenado = numpy.ctypeslib.as_array( csumlib.ordenar(n,a), shape=(n,))
     return ordenado

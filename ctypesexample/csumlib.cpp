@@ -36,7 +36,7 @@ LIBRARY_API double *add(double *a, double *b)
     return res;
 }
 
-LIBRARY_API int * ordenar(int *lista)
+LIBRARY_API int * ordenar(int n, int *lista)
 {
     int size = sizeof(lista)/sizeof(lista[0]);
     std::sort(lista,lista+size);
