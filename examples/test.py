@@ -3,11 +3,10 @@ from ctypesexample.summing import csum, add, ordenar
 import time
 
 array = numpy.arange(0, 100000000, 1, numpy.int32)
-size = len(array)
 
 start = time.time()
 # array_sum = csum(len(array), array)
-array_ordenado = ordenar(size,array)
+array_ordenado = ordenar(array)
 end = time.time()
 print("Time: " + str(end-start))
 
